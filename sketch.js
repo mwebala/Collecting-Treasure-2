@@ -32,8 +32,8 @@ boy = createSprite(width/2,height - 20,20,20);
 boy.addAnimation("SahilRunning",boyImg);
 boy.scale=0.08;
   
-endImage = createSprite(200,300,30,40);
-//endImage.addImage("end",endImg);
+endImage = createSprite(width/2,height/2,30,40);
+endImage.addAnimation("end",endImg);
   
 cashG=new Group();
 diamondsG=new Group();
@@ -78,7 +78,7 @@ function draw() {
 
     }else{
       if(swordGroup.isTouching(boy)) {
-    
+    gameState = END
         boy.addAnimation("SahilRunning", endImg);
         boy.x = 200
         boy.y = 300
@@ -102,9 +102,7 @@ function draw() {
     endImage.visible = true;
     endImage.scale = 2
 
-    textSize(20);
-    fill("black");
-    text("Treasure: "+ treasureCollection,150,30);
+   
 
 
     }
@@ -125,16 +123,22 @@ function draw() {
 
     path.velocity = 0
 
-    boy.addAnimation("SahilRunning", endImg);
-    boy.x = 200
-    boy.y = 300
+   // boy.addAnimation("SahilRunning", endImg);
+    //boy.x = 200
+    //boy.y = 300
+    boy.visible = false;
+    endImage.visible = true;
+    endImage.x = width/2
+    endImage.y = height/2
 
   }
-
+ 
   
 
   drawSprites();
-
+  textSize(20);
+  fill("black");
+  text("Treasure: "+ treasureCollection,150,30);
 }
 
 function createCash() {
